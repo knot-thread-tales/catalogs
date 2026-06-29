@@ -5,7 +5,7 @@
 # ─── SECRETS — NEVER commit a config.js with real values ────
 # If you accidentally committed real keys, rotate them immediately
 # in Supabase dashboard and Cloudinary settings.
-# config.js
+config.js
 
 # ─── OS files ────────────────────────────────────────────────
 .DS_Store
