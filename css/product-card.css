@@ -1,0 +1,106 @@
+/* ==========================================================================
+   Knot & Thread Tales — Product Card
+   ========================================================================== */
+.product-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--duration-base) var(--ease-out), transform var(--duration-base) var(--ease-out);
+}
+
+.product-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
+
+.product-card__media {
+  position: relative;
+  display: block;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: var(--color-accent);
+}
+
+.product-card__img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+
+.product-card:hover .product-card__img { transform: scale(1.08); }
+
+.product-card__badges {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  align-items: flex-start;
+}
+
+.product-card__shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.45) 45%, transparent 60%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+
+.product-card:hover .product-card__shine {
+  transform: translateX(120%);
+  transition: transform 900ms var(--ease-out);
+}
+
+.product-card__body { padding: var(--space-5); }
+
+.product-card__code {
+  font-size: var(--fs-xs);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.04em;
+  margin-bottom: var(--space-2);
+}
+
+.product-card__name {
+  font-size: var(--fs-md);
+  margin-bottom: var(--space-2);
+  line-height: var(--lh-snug);
+}
+.product-card__name a:hover { color: var(--color-primary); }
+
+.product-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-2);
+}
+.price-offer { font-family: var(--font-display); font-size: var(--fs-lg); color: var(--color-text); font-weight: 600; }
+.price-original { font-size: var(--fs-sm); color: var(--color-text-secondary); text-decoration: line-through; }
+.price-discount { font-size: var(--fs-xs); font-weight: 700; color: var(--color-success); }
+
+.product-card__stock { font-size: var(--fs-xs); margin-bottom: var(--space-4); }
+.product-card__stock.in-stock { color: var(--color-success); }
+.product-card__stock.out-of-stock { color: var(--color-error); }
+
+.product-card--skeleton { box-shadow: none; }
+
+/* ---- Empty state ---- */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: var(--space-9) var(--space-5);
+}
+.empty-state__title { font-family: var(--font-display); font-size: var(--fs-lg); color: var(--color-text); margin-bottom: var(--space-2); }
+.empty-state__body { font-size: var(--fs-sm); }
+
+/* ---- Pagination ---- */
+.pagination { display: flex; justify-content: center; gap: var(--space-2); margin-top: var(--space-7); }
+.page-btn {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+}
+.page-btn:hover { background: var(--color-accent); }
+.page-btn.is-active { background: var(--color-primary); color: #fff; }

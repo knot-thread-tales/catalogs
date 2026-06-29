@@ -1,0 +1,53 @@
+# ============================================================
+# Knot & Thread Tales — .gitignore
+# ============================================================
+
+# ─── SECRETS — NEVER commit a config.js with real values ────
+# If you accidentally committed real keys, rotate them immediately
+# in Supabase dashboard and Cloudinary settings.
+config.js
+
+# ─── OS files ────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ─── Editor / IDE ────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# ─── Logs ────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+
+# ─── Node (if you ever add tooling locally) ──────────────────
+node_modules/
+package-lock.json
+yarn.lock
+
+# ─── Build output (if you ever add a build step) ─────────────
+dist/
+build/
+.cache/
+
+# ─── Env files ───────────────────────────────────────────────
+.env
+.env.local
+.env.production
+.env.*
+
+# ─── Temporary / test files ──────────────────────────────────
+*.tmp
+*.bak
+*.orig
+test-*.html

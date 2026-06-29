@@ -1,0 +1,191 @@
+/* ==========================================================================
+   Knot & Thread Tales — Modals
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(44, 38, 35, 0.55);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-out), visibility var(--duration-base);
+}
+
+.modal-overlay.is-open { opacity: 1; visibility: visible; }
+
+.modal-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(24px) scale(0.98);
+  transition: transform var(--duration-base) var(--ease-out);
+  padding: var(--space-7);
+  position: relative;
+}
+
+.modal-overlay.is-open .modal-panel { transform: translateY(0) scale(1); }
+
+.modal-close {
+  position: absolute;
+  top: var(--space-5);
+  right: var(--space-5);
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg);
+  transition: background var(--duration-fast) var(--ease-out);
+  z-index: 3;
+}
+.modal-close:hover { background: var(--color-accent); }
+
+.modal-title { margin-bottom: var(--space-2); }
+.modal-subtitle { font-size: var(--fs-sm); margin-bottom: var(--space-6); }
+
+/* ---- Order summary inside order modal ---- */
+.order-product-summary {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: var(--color-bg);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-6);
+}
+.order-product-summary img { border-radius: var(--radius-sm); object-fit: cover; }
+.order-summary-name { font-weight: 600; font-size: var(--fs-sm); }
+.order-summary-meta { font-size: var(--fs-xs); color: var(--color-text-secondary); }
+
+/* ---- Payment modal ---- */
+.payment-qr-wrap {
+  text-align: center;
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+  margin-bottom: var(--space-5);
+}
+.payment-qr-wrap img {
+  width: 200px; height: 200px;
+  margin: 0 auto var(--space-4);
+  border-radius: var(--radius-sm);
+  background: #fff;
+  padding: var(--space-2);
+  box-shadow: var(--shadow-sm);
+}
+.payment-merchant-name { font-family: var(--font-display); font-size: var(--fs-md); margin-bottom: var(--space-1); }
+.payment-amount { font-size: var(--fs-lg); font-weight: 700; color: var(--color-primary); }
+
+.upi-id-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+  font-size: var(--fs-sm);
+}
+.upi-id-value { font-weight: 600; background: var(--color-surface); padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm); }
+
+.payment-actions { display: flex; gap: var(--space-3); margin-bottom: var(--space-6); }
+.payment-actions .btn { flex: 1; }
+
+/* ---- Product detail modal ---- */
+.product-modal .modal-panel {
+  max-width: 980px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.product-modal__gallery { background: var(--color-bg); padding: var(--space-6); }
+
+.product-modal__gallery-main {
+  position: relative;
+  aspect-ratio: 1/1;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+  background: var(--color-accent);
+}
+.product-modal__gallery-main img { width: 100%; height: 100%; object-fit: cover; }
+
+.gallery-zoom-btn {
+  position: absolute;
+  bottom: var(--space-3);
+  right: var(--space-3);
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.9);
+  border-radius: var(--radius-pill);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+.gallery-zoom-btn:hover { transform: scale(1.08); }
+
+.product-modal__thumbs { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.gallery-thumb {
+  width: 64px; height: 64px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+  transition: border-color var(--duration-fast) var(--ease-out);
+  flex-shrink: 0;
+}
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gallery-thumb.is-active { border-color: var(--color-primary); }
+
+.product-modal__info { padding: var(--space-7); overflow-y: auto; }
+.product-modal__badges { position: static; flex-direction: row; margin-bottom: var(--space-4); }
+.product-modal__code { font-size: var(--fs-xs); color: var(--color-text-secondary); margin-bottom: var(--space-2); }
+.product-modal__name { margin-bottom: var(--space-3); }
+.product-modal__price { margin-bottom: var(--space-5); font-size: var(--fs-lg); }
+.product-modal__desc { margin-bottom: var(--space-6); line-height: var(--lh-relaxed); }
+
+.detail-attrs { margin-bottom: var(--space-6); }
+.detail-attr {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--fs-sm);
+}
+.detail-attr__label { color: var(--color-text-secondary); flex-shrink: 0; }
+.detail-attr span:last-child { text-align: right; color: var(--color-text); font-weight: 500; }
+
+.color-swatches { display: flex; gap: var(--space-2); }
+.color-swatch {
+  width: 22px; height: 22px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border-strong);
+  display: inline-block;
+}
+
+@media (max-width: 760px) {
+  .product-modal .modal-panel { grid-template-columns: 1fr; max-height: 92vh; }
+}
+
+/* ---- Fullscreen lightbox ---- */
+.fullscreen-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 17, 15, 0.95);
+  z-index: calc(var(--z-modal) + 10);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--duration-base) var(--ease-out), visibility var(--duration-base);
+}
+.fullscreen-lightbox.is-open { opacity: 1; visibility: visible; }
+.fullscreen-lightbox img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: var(--radius-sm); }
+.fullscreen-lightbox .modal-close { background: rgba(255,255,255,0.15); color: #fff; }
+.fullscreen-lightbox .modal-close:hover { background: rgba(255,255,255,0.3); }
